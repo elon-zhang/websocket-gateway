@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.8)
+set(TARGET_NAME "gateserver")
+project(${TARGET_NAME} CXX)
+aux_source_directory(. CODE)
+
+if(WIN32)
+	file(GLOB HEAD *.h)
+	add_executable(${TARGET_NAME} ${CODE} ${HEAD})
+else(WIN32)
+	SET_CCACHE_COMPLER()
+	add_executable(${TARGET_NAME} ${CODE})
+endif(WIN32)
+target_link_libraries(${TARGET_NAME} ${TOTALLIB})
